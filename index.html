@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kim Thomson — Senior UX Designer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0a0a0b;
+    --bg-surface: #111113;
+    --bg-card: #16161a;
+    --bg-card-hover: #1c1c22;
+    --border: rgba(255,255,255,0.07);
+    --border-accent: rgba(255,255,255,0.15);
+    --text: #e8e6e0;
+    --text-muted: #6b6a65;
+    --text-dim: #3d3c39;
+    --accent: #c8f56a;
+    --accent-dim: rgba(200,245,106,0.12);
+    --accent-glow: rgba(200,245,106,0.06);
+    --teal: #4ecdc4;
+    --teal-dim: rgba(78,205,196,0.1);
+    --mono: 'DM Mono', monospace;
+    --sans: 'Syne', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--mono);
+    font-size: 14px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  .container { max-width: 900px; margin: 0 auto; padding: 0 2rem; }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(10,10,11,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 1rem 0;
+  }
+  nav .inner {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .nav-logo {
+    font-family: var(--sans);
+    font-weight: 800;
+    font-size: 15px;
+    letter-spacing: -0.02em;
+    color: var(--text);
+  }
+  .nav-logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 2rem; }
+  .nav-links a {
+    font-size: 12px;
+    color: var(--text-muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); text-decoration: none; }
+
+  /* HERO */
+  .hero {
+    padding: 6rem 0 5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 2rem;
+  }
+  .hero-tag::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 1px;
+    background: var(--accent);
+  }
+  h1 {
+    font-family: var(--sans);
+    font-size: clamp(2.8rem, 6vw, 5rem);
+    font-weight: 800;
+    line-height: 1.0;
+    letter-spacing: -0.03em;
+    color: var(--text);
+    margin-bottom: 1.5rem;
+  }
+  h1 .dim { color: var(--text-muted); }
+  .hero-sub {
+    font-size: 15px;
+    color: var(--text-muted);
+    max-width: 540px;
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+  }
+  .hero-sub strong { color: var(--text); font-weight: 400; }
+
+  .hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem 2rem;
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+  .hero-meta span { display: flex; align-items: center; gap: 6px; }
+  .dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    display: inline-block;
+    flex-shrink: 0;
+  }
+  .dot.teal { background: var(--teal); }
+
+  /* SKILLS STRIP */
+  .skills-strip {
+    padding: 2.5rem 0;
+    border-bottom: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .skill-tag {
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    padding: 5px 12px;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    color: var(--text-muted);
+    background: var(--bg-card);
+    transition: all 0.2s;
+  }
+  .skill-tag:hover {
+    border-color: var(--border-accent);
+    color: var(--text);
+  }
+  .skill-tag.accent {
+    border-color: rgba(200,245,106,0.3);
+    color: var(--accent);
+    background: var(--accent-glow);
+  }
+
+  /* SECTION HEADERS */
+  .section {
+    padding: 4rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 3rem;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* CASE STUDIES */
+  .case-study {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 2.5rem;
+    margin-bottom: 1.5rem;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .case-study:hover {
+    border-color: var(--border-accent);
+    background: var(--bg-card-hover);
+  }
+
+  .cs-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+  }
+  .cs-number {
+    font-size: 11px;
+    color: var(--text-dim);
+    letter-spacing: 0.1em;
+    margin-bottom: 6px;
+  }
+  .cs-title {
+    font-family: var(--sans);
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    line-height: 1.2;
+    max-width: 560px;
+  }
+  .cs-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    align-items: flex-start;
+    flex-shrink: 0;
+  }
+  .badge {
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 2px;
+    white-space: nowrap;
+  }
+  .badge-green {
+    background: rgba(200,245,106,0.1);
+    color: var(--accent);
+    border: 1px solid rgba(200,245,106,0.2);
+  }
+  .badge-teal {
+    background: var(--teal-dim);
+    color: var(--teal);
+    border: 1px solid rgba(78,205,196,0.2);
+  }
+  .badge-gray {
+    background: rgba(255,255,255,0.04);
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+  }
+
+  .cs-meta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+  .cs-meta-item { display: flex; align-items: center; gap: 6px; }
+  .cs-meta-label { color: var(--text-dim); }
+
+  .cs-body { display: flex; flex-direction: column; gap: 1.5rem; }
+
+  .cs-block-label {
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 6px;
+  }
+  .cs-block-label.teal { color: var(--teal); }
+
+  .cs-text {
+    font-size: 13.5px;
+    color: var(--text-muted);
+    line-height: 1.8;
+  }
+  .cs-text strong { color: var(--text); font-weight: 400; }
+
+  .cs-outcomes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 12px;
+    margin-top: 0.5rem;
+  }
+  .outcome-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 1rem 1.2rem;
+  }
+  .outcome-value {
+    font-family: var(--sans);
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .outcome-value.teal { color: var(--teal); }
+  .outcome-label {
+    font-size: 11px;
+    color: var(--text-muted);
+    line-height: 1.4;
+  }
+
+  .process-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .process-step {
+    display: flex;
+    gap: 1rem;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .process-step:last-child { border-bottom: none; }
+  .step-num {
+    font-size: 10px;
+    color: var(--text-dim);
+    letter-spacing: 0.1em;
+    min-width: 28px;
+    padding-top: 2px;
+  }
+  .step-content { flex: 1; }
+  .step-title {
+    font-size: 13px;
+    color: var(--text);
+    margin-bottom: 2px;
+  }
+  .step-desc {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  /* EXPERIENCE */
+  .exp-item {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 2rem;
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .exp-item:last-child { border-bottom: none; }
+  .exp-period {
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 0.04em;
+    padding-top: 3px;
+  }
+  .exp-company {
+    font-size: 11px;
+    color: var(--text-dim);
+    margin-top: 4px;
+  }
+  .exp-right {}
+  .exp-role {
+    font-family: var(--sans);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+  .exp-desc {
+    font-size: 12.5px;
+    color: var(--text-muted);
+    line-height: 1.8;
+  }
+  .exp-desc li { list-style: none; padding-left: 1.2em; position: relative; margin-bottom: 4px; }
+  .exp-desc li::before { content: '—'; position: absolute; left: 0; color: var(--text-dim); }
+
+  /* CONTACT */
+  .contact { padding: 4rem 0; }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .contact-cell {
+    background: var(--bg-card);
+    padding: 1.5rem 2rem;
+    transition: background 0.2s;
+  }
+  .contact-cell:hover { background: var(--bg-card-hover); }
+  .contact-cell-label {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 6px;
+  }
+  .contact-cell-value {
+    font-size: 14px;
+    color: var(--text);
+  }
+  .contact-cell-value a { color: var(--accent); }
+
+  /* FOOTER */
+  footer {
+    padding: 2rem 0;
+    border-top: 1px solid var(--border);
+  }
+  .footer-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11px;
+    color: var(--text-dim);
+  }
+
+
+  .proto-btn {
+    border-color: rgba(78,205,196,0.3);
+    color: var(--teal);
+    background: var(--teal-dim);
+    text-decoration: none;
+  }
+  .proto-btn:hover {
+    background: rgba(78,205,196,0.2);
+    border-color: rgba(78,205,196,0.5);
+    text-decoration: none;
+  }
+  /* LIGHTBOX */
+  .lightbox-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: rgba(0,0,0,0.92);
+    backdrop-filter: blur(8px);
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+  .lightbox-overlay.open {
+    display: flex;
+    animation: fadeIn 0.2s ease;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  .lightbox-inner {
+    position: relative;
+    width: 100%;
+    max-width: 1100px;
+    aspect-ratio: 16/9;
+    background: var(--bg-card);
+    border: 1px solid var(--border-accent);
+    border-radius: 6px;
+    overflow: hidden;
+    animation: scaleIn 0.2s ease;
+  }
+  @keyframes scaleIn {
+    from { transform: scale(0.96); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+  .lightbox-inner iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+  }
+  .lightbox-close {
+    position: absolute;
+    top: -2.5rem;
+    right: 0;
+    background: none;
+    border: 1px solid var(--border-accent);
+    color: var(--text-muted);
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    padding: 4px 12px;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .lightbox-close:hover {
+    color: var(--text);
+    border-color: var(--text-muted);
+  }
+  .lightbox-title {
+    position: absolute;
+    top: -2.5rem;
+    left: 0;
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 0.06em;
+  }
+
+  /* VIEW DECK BUTTON */
+  .view-deck-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 1.5rem;
+    padding: 10px 20px;
+    background: var(--accent-dim);
+    border: 1px solid rgba(200,245,106,0.3);
+    border-radius: 2px;
+    color: var(--accent);
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .view-deck-btn:hover {
+    background: rgba(200,245,106,0.2);
+    border-color: rgba(200,245,106,0.5);
+  }
+  .view-deck-btn .arrow {
+    font-size: 14px;
+    transition: transform 0.2s;
+  }
+  .view-deck-btn:hover .arrow {
+    transform: translateX(3px);
+  }
+
+  @media (max-width: 640px) {
+    .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
+    .contact-grid { grid-template-columns: 1fr; }
+    nav .nav-links { display: none; }
+    .lightbox-overlay { padding: 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="inner">
+    <div class="nav-logo">Kim <span>Thomson</span></div>
+    <div class="nav-links">
+      <a href="#work">Work</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-tag">Available for Senior UX roles · London</div>
+      <h1>Senior UX<br><span class="dim">Designer</span></h1>
+      <p class="hero-sub">
+        8+ years designing <strong>AI-powered products</strong>, emerging tech experiences, and complex B2B/B2C systems. Specialising in <strong>LLM integration, AR, and innovation frameworks</strong> — from concept to launch.
+      </p>
+      <div class="hero-meta">
+        <span><span class="dot"></span> LLM &amp; AI Product Design</span>
+        <span><span class="dot"></span> Augmented Reality</span>
+        <span><span class="dot teal"></span> 8+ years experience</span>
+        <span><span class="dot teal"></span> London · Remote-ready</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="skills-strip">
+    <div class="container">
+      <div class="skills-grid">
+        <span class="skill-tag accent">LLM / AI Integration</span>
+        <span class="skill-tag accent">Augmented Reality</span>
+        <span class="skill-tag accent">AWS Bedrock</span>
+        <span class="skill-tag">Figma</span>
+        <span class="skill-tag">User Research</span>
+        <span class="skill-tag">Design Systems</span>
+        <span class="skill-tag">Usability Testing</span>
+        <span class="skill-tag">Wireframing</span>
+        <span class="skill-tag">Prototyping</span>
+        <span class="skill-tag">Design Sprints</span>
+        <span class="skill-tag">Agile / Scrum</span>
+        <span class="skill-tag">Interaction Design</span>
+        <span class="skill-tag">MixPanel</span>
+        <span class="skill-tag">Google Analytics</span>
+        <span class="skill-tag">Accessibility (WCAG)</span>
+        <span class="skill-tag">A/B Testing</span>
+        <span class="skill-tag">Workshop Facilitation</span>
+        <span class="skill-tag">No-code / Vibe Coding</span>
+        <span class="skill-tag">HTML / CSS</span>
+        <span class="skill-tag">Adobe Creative Suite</span>
+        <span class="skill-tag">Miro</span>
+        <span class="skill-tag">Maze</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CASE STUDIES -->
+  <section class="section" id="work">
+    <div class="container">
+      <div class="section-label">Selected work</div>
+
+      <!-- CASE STUDY 1 -->
+      <div class="case-study">
+        <div class="cs-header">
+          <div>
+            <div class="cs-number">01 / 2024–2025</div>
+            <div class="cs-title">LLM-Powered Exhibitor Recommendations Engine</div>
+          </div>
+          <div class="cs-badges">
+            <span class="badge badge-green">AI / LLM</span>
+            <span class="badge badge-teal">B2B SaaS</span>
+            <span class="badge badge-gray">RX Global</span>
+          </div>
+        </div>
+
+        <div class="cs-meta-row">
+          <div class="cs-meta-item"><span class="cs-meta-label">Role:</span> UX Design Lead</div>
+          <div class="cs-meta-item"><span class="cs-meta-label">Platform:</span> Web (B2B)</div>
+          <div class="cs-meta-item"><span class="cs-meta-label">Scale:</span> 250+ trade shows</div>
+          <div class="cs-meta-item"><span class="cs-meta-label">Tech:</span> AWS Bedrock, LLM</div>
+        </div>
+
+        <div class="cs-body">
+          <div>
+            <div class="cs-block-label">The Problem</div>
+            <p class="cs-text">
+              Trade show attendees were overwhelmed by directories of thousands of exhibitors, with no meaningful way to find who was actually relevant to them. Discovery was essentially a manual search problem — time-consuming, frustrating, and leading to poor event ROI for visitors. RX Global needed a smarter approach that could scale across their portfolio of <strong>250+ events and brands</strong>.
+            </p>
+          </div>
+
+          <div>
+            <div class="cs-block-label">My Role &amp; Approach</div>
+            <p class="cs-text">
+              I led UX design end-to-end — from initial discovery through to launch — for an AI-powered recommendations engine built on <strong>AWS Bedrock</strong> using large language models. The system delivers personalised exhibitor and supplier suggestions based on both explicit user input and implicit behavioural signals (navigation patterns, dwell time, interactions).
+            </p>
+          </div>
+
+          <div>
+            <div class="cs-block-label">Process</div>
+            <div class="process-steps">
+              <div class="process-step">
+                <div class="step-num">01</div>
+                <div class="step-content">
+                  <div class="step-title">Discovery &amp; stakeholder research</div>
+                  <div class="step-desc">Interviews with exhibitors, attendees, and internal event managers to map the current discovery journey and identify friction points. Analysed existing navigation analytics to understand real-world browsing behaviour.</div>
+                </div>
+              </div>
+              <div class="process-step">
+                <div class="step-num">02</div>
+                <div class="step-content">
+                  <div class="step-title">Defining the AI interaction model</div>
+                  <div class="step-desc">Worked with engineers and data scientists to understand what the LLM could reliably deliver. Defined input modalities (explicit query vs implicit behaviour), output formats, and confidence thresholds. Designed for graceful degradation when recommendations were uncertain.</div>
+                </div>
+              </div>
+              <div class="process-step">
+                <div class="step-num">03</div>
+                <div class="step-content">
+                  <div class="step-title">Prototyping the recommendation surface</div>
+                  <div class="step-desc">Rapid iteration across multiple UI patterns — inline suggestions, dedicated discovery surfaces, onboarding preference capture. Tested with real attendees at three different events to validate comprehension and trust in AI-generated recommendations.</div>
+                </div>
+              </div>
+              <div class="process-step">
+                <div class="step-num">04</div>
+                <div class="step-content">
+                  <div class="step-title">Designing for explainability &amp; trust</div>
+                  <div class="step-desc">A key challenge was helping users understand why something was being recommended. Designed lightweight explainability cues — "based on your interest in X" — that increased perceived relevance without overwhelming the UI.</div>
+                </div>
+              </div>
+              <div class="process-step">
+                <div class="step-num">05</div>
+                <div class="step-content">
+                  <div class="step-title">Launch &amp; iteration</div>
+                  <div class="step-desc">Launched at a major trade show and iterated based on post-event analytics and attendee feedback. Established a feedback loop with the engineering team to continuously improve recommendation quality.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="cs-block-label">Key Outcomes</div>
+            <div class="cs-outcomes">
+              <div class="outcome-card">
+                <div class="outcome-value">250+</div>
+                <div class="outcome-label">Events &amp; brands the system scales across</div>
+              </div>
+              <div class="outcome-card">
+                <div class="outcome-value teal">↑</div>
+                <div class="outcome-label">Measurable improvement in exhibitor discovery relevance</div>
+              </div>
+              <div class="outcome-card">
+                <div class="outcome-value">LLM</div>
+                <div class="outcome-label">First AI-native feature in RX Global's attendee platform</div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="cs-block-label">What I Learned</div>
+            <p class="cs-text">
+              Designing for LLM-powered features requires a fundamentally different approach to UX — you're not designing deterministic flows but <strong>probabilistic experiences</strong>. Managing user expectations around AI confidence, handling edge cases gracefully, and building trust incrementally were the most interesting design challenges I've worked on. The project also reinforced how critical it is to involve engineers early in the design process when the output space is defined by model behaviour rather than fixed logic.
+            </p>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:10px;">
+            <button class="view-deck-btn" onclick="openLightbox('https://www.figma.com/deck/uZc2k1QBZ0zUtnyoiSfKcv/embed', 'AI Powered Recommendations — Full Case Study')">
+              <span>View case study deck</span>
+              <span class="arrow">→</span>
+            </button>
+            <a class="view-deck-btn proto-btn" href="https://www.figma.com/proto/cVvfg35htJUSFUFHVxekbp/LLM-Matchmaking?page-id=915%3A1252&node-id=915-1700&p=f&viewport=655%2C394%2C0.03&t=D3dE1vOmltacs0rU-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=915%3A1700&show-proto-sidebar=1" target="_blank" rel="noopener">
+              <span>View interactive prototype</span>
+              <span class="arrow">↗</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- CASE STUDY 2 -->
+      <div class="case-study">
+        <div class="cs-header">
+          <div>
+            <div class="cs-number">02 / 2023</div>
+            <div class="cs-title">FIBO AR Treasure Hunt — Gamified Convention Experience</div>
+          </div>
+          <div class="cs-badges">
+            <span class="badge badge-green">AR / Spatial</span>
+            <span class="badge badge-teal">B2C</span>
+            <span class="badge badge-gray">RX Global</span>
+          </div>
+        </div>
+
+        <div class="cs-meta-row">
+          <div class="cs-meta-item"><span class="cs-meta-label">Role:</span> UX Concept &amp; Design Lead</div>
+          <div class="cs-meta-item"><span class="cs-meta-label">Event:</span> FIBO Fitness Convention</div>
+          <div class="cs-meta-item"><span class="cs-meta-label">Format:</span> Immersive AR Game</div>
+          <div class="cs-meta-item"><span class="cs-meta-label">Audience:</span> B2C Visitors</div>
+        </div>
+
+        <div class="cs-body">
+          <div>
+            <div class="cs-block-label">The Problem</div>
+            <p class="cs-text">
+              FIBO is one of Europe's largest fitness industry trade shows, but like many large conventions, visitor engagement beyond passive browsing was limited. The challenge was to design an experience that <strong>drove active exploration of the event floor</strong>, increased dwell time at exhibitor stands, and created memorable moments that visitors would share — all without disrupting the flow of a live event.
+            </p>
+          </div>
+
+          <div>
+            <div class="cs-block-label">My Role &amp; Approach</div>
+            <p class="cs-text">
+              I conceived and designed an <strong>augmented reality treasure hunt</strong> that transformed the convention floor into a gamified discovery experience. Visitors used their smartphones to hunt for hidden AR markers placed throughout the event, unlocking challenges, prizes, and exclusive exhibitor interactions along the way.
+            </p>
+          </div>
+
+          <div>
+            <div class="cs-block-label">Process</div>
+            <div class="process-steps">
+              <div class="process-step">
+                <div class="step-num">01</div>
+                <div class="step-content">
+                  <div class="step-title">Concept development &amp; viability testing</div>
+                  <div class="step-desc">Mapped the convention floor layout and identified high and low-traffic zones. Tested AR marker recognition in real exhibition environments (mixed lighting, crowd density, reflective surfaces) before committing to the format.</div>
+                </div>
+              </div>
+              <div class="process-step">
+                <div class="step-num">02</div>
+                <div class="step-content">
+                  <div class="step-title">Designing the game mechanics</div>
+                  <div class="step-desc">Defined the hunt structure, reward tiers, and difficulty curve to maintain engagement across different visitor types — casual browsers, competitive players, and families. Worked with the events team to integrate exhibitor touchpoints naturally into the game without feeling forced.</div>
+                </div>
+              </div>
+              <div class="process-step">
+                <div class="step-num">03</div>
+                <div class="step-content">
+                  <div class="step-title">UX for a live, physical environment</div>
+                  <div class="step-desc">Designing for a phone-in-hand experience in a crowded, noisy convention hall meant every interaction had to be immediately legible. Designed for one-handed use, minimal cognitive load at each step, and clear visual hierarchy in mixed real-world conditions.</div>
+                </div>
+              </div>
+              <div class="process-step">
+                <div class="step-num">04</div>
+                <div class="step-content">
+                  <div class="step-title">On-site iteration</div>
+                  <div class="step-desc">Observed visitors in real-time during the event and made rapid adjustments to marker placement, hint clarity, and reward timing based on live behaviour. Having a short feedback loop between observation and iteration was essential in a live environment.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="cs-block-label">Key Outcomes</div>
+            <div class="cs-outcomes">
+              <div class="outcome-card">
+                <div class="outcome-value">AR</div>
+                <div class="outcome-label">First AR gamification experience in RX Global's events portfolio</div>
+              </div>
+              <div class="outcome-card">
+                <div class="outcome-value teal">↑</div>
+                <div class="outcome-label">Increased visitor engagement &amp; exhibitor stand visits</div>
+              </div>
+              <div class="outcome-card">
+                <div class="outcome-value">Live</div>
+                <div class="outcome-label">Successfully delivered at one of Europe's largest fitness events</div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="cs-block-label">What I Learned</div>
+            <p class="cs-text">
+              Designing for physical spaces requires a completely different mental model to screen-based UX. <strong>Environmental context, crowd dynamics, and the unpredictability of real-world conditions</strong> become design constraints you can't prototype away. The project taught me to design with much wider tolerances — and to get comfortable making real-time design decisions on the floor during a live event.
+            </p>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:10px;">
+            <button class="view-deck-btn" onclick="openLightbox('https://www.figma.com/deck/xImS4QzhgQKHoNnWblC4hg/embed', 'FIBO AR Treasure Hunt — Full Case Study')">
+              <span>View case study deck</span>
+              <span class="arrow">→</span>
+            </button>
+            <a class="view-deck-btn proto-btn" href="https://www.figma.com/proto/aViM9LhM9vpD95Pa8u5Kwz/FIBO-Design-Sprint?page-id=734%3A523&node-id=764-558&p=f&viewport=582%2C622%2C0.05&t=fFN8QPcoXoylnWjR-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=764%3A558" target="_blank" rel="noopener">
+              <span>View interactive prototype</span>
+              <span class="arrow">↗</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="section" id="experience">
+    <div class="container">
+      <div class="section-label">Experience</div>
+
+      <div class="exp-item">
+        <div>
+          <div class="exp-period">Mar 2022 — Oct 2025</div>
+          <div class="exp-company">RX Global · London</div>
+        </div>
+        <div class="exp-right">
+          <div class="exp-role">Senior UX Designer, Customer Discovery &amp; Innovation</div>
+          <ul class="exp-desc">
+            <li>UX Design Lead for Innolab, RX Global's agile innovation team focused on lean prototyping and experimental product concepts</li>
+            <li>Designed and launched an AI-driven recommendations engine using LLMs via AWS Bedrock, personalising exhibitor discovery across 250+ events</li>
+            <li>Conceived and delivered an AR treasure hunt at FIBO, the first AR gamification experience in the RX portfolio</li>
+            <li>Established a lean innovation framework that reduced concept-to-test cycle time by 40%</li>
+            <li>Led a design system task group for Figma implementation across 250+ brands and trade shows</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div>
+          <div class="exp-period">Sep 2014 — present</div>
+          <div class="exp-company">Kim Sum Studio · London</div>
+        </div>
+        <div class="exp-right">
+          <div class="exp-role">Senior UX/UI Designer (Freelance Consultant)</div>
+          <ul class="exp-desc">
+            <li>End-to-end UX/UI design for start-ups and scale-ups across Life Sciences, EdTech, Hospitality, and AI</li>
+            <li>Rods &amp; Cones: redesigned surgical telepresence interface, unanimously chosen by Harvard Medical School surgeons in A/B testing</li>
+            <li>Amazing People Schools: designed gamified digital learning platform for schools across UK, South Africa, and Australia</li>
+            <li>Currently developing Claven, a no-code AI-powered advocacy tool</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div>
+          <div class="exp-period">Mar 2017 — Jul 2018</div>
+          <div class="exp-company">Maccreanor Lavington · London</div>
+        </div>
+        <div class="exp-right">
+          <div class="exp-role">Marketing Coordinator</div>
+          <ul class="exp-desc">
+            <li>Dual role supporting executive leadership and managing marketing for a leading architectural practice</li>
+            <li>Led corporate brand refresh and organised London Festival of Architecture panel events with record attendance</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div>
+          <div class="exp-period">Apr 2012 — May 2015</div>
+          <div class="exp-company">Starbucks EMEA · Amsterdam</div>
+        </div>
+        <div class="exp-right">
+          <div class="exp-role">Design Coordinator</div>
+          <ul class="exp-desc">
+            <li>Supported in-house store design studio for a team of 30+ interior designers and architects, reporting to VP of Design</li>
+            <li>Established onboarding, procurement, and time-logging systems for a newly formed EMEA studio; created image library rolled out globally</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="section-label">Contact</div>
+      <div class="contact-grid">
+        <div class="contact-cell">
+          <div class="contact-cell-label">Email</div>
+          <div class="contact-cell-value"><a href="/cdn-cgi/l/email-protection#dcb7b5b1b1a5f2a8b4b3b1afb3b29cb5bfb0b3a9b8f2bfb3b1"><span class="__cf_email__" data-cfemail="7f1416121206510b1710120c10113f161c13100a1b511c1012">[email&#160;protected]</span></a></div>
+        </div>
+        <div class="contact-cell">
+          <div class="contact-cell-label">Phone</div>
+          <div class="contact-cell-value">07950 232006</div>
+        </div>
+        <div class="contact-cell">
+          <div class="contact-cell-label">Location</div>
+          <div class="contact-cell-value">London, UK · Open to hybrid &amp; remote</div>
+        </div>
+        <div class="contact-cell">
+          <div class="contact-cell-label">Portfolio</div>
+          <div class="contact-cell-value"><a href="https://kimsum.studio" target="_blank">kimsum.studio</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <span>Kim Thomson — Senior UX Designer</span>
+    <span>London · 2026</span>
+  </div>
+</footer>
+
+<div class="lightbox-overlay" id="lightbox" onclick="handleOverlayClick(event)">
+  <div class="lightbox-inner" id="lightbox-inner">
+    <div class="lightbox-title" id="lightbox-title"></div>
+    <button class="lightbox-close" onclick="closeLightbox()">ESC / close</button>
+    <iframe id="lightbox-iframe" src="" allowfullscreen></iframe>
+  </div>
+</div>
+
+<script>
+  function openLightbox(url, title) {
+    document.getElementById('lightbox-iframe').src = url;
+    document.getElementById('lightbox-title').textContent = title;
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+    document.getElementById('lightbox-iframe').src = '';
+    document.body.style.overflow = '';
+  }
+  function handleOverlayClick(e) {
+    if (e.target === document.getElementById('lightbox')) closeLightbox();
+  }
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeLightbox();
+  });
+</script>
+
+</body>
+</html>
