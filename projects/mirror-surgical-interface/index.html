@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>mirrOR Surgical Interface Redesign — Kim Sum Studio</title>
+<meta name="description" content="Simplifying a live-streaming interface used during surgery, down to six core controls.">
+<link rel="canonical" href="https://kimsum.studio/projects/mirror-surgical-interface/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="mirrOR Surgical Interface Redesign — Kim Sum Studio">
+<meta property="og:description" content="Simplifying a live-streaming interface used during surgery, down to six core controls.">
+<meta property="og:url" content="https://kimsum.studio/projects/mirror-surgical-interface/">
+<meta property="og:image" content="https://kimsum.studio/assets/img/og.png">
+<meta name="theme-color" content="#FFFFFF">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&amp;display=swap">
+<style>
+@font-face{font-family:"NEXT ART";src:url(/assets/fonts/next-art-regular.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"NEXT ART";src:url(/assets/fonts/next-art-semibold.woff2) format("woff2");font-weight:600;font-display:swap}
+@font-face{font-family:"NEXT ART";src:url(/assets/fonts/next-art-bold.woff2) format("woff2");font-weight:700;font-display:swap}
+body{margin:0;background:#FFFFFF}
+a{color:#111111}a:hover{color:#B30505}
+.kss{font-family:Avenir,"Avenir Next","Nunito Sans","Helvetica Neue",Arial,sans-serif;color:#111111;background:#FFFFFF;-webkit-font-smoothing:antialiased}
+.disp{font-family:"NEXT ART",Avenir,"Avenir Next",sans-serif}
+.kss a:focus-visible{outline:2px solid #B30505;outline-offset:4px;border-radius:2px}
+.wrap{padding-inline:clamp(24px,5.5vw,80px)}
+.navlink{display:inline-flex;align-items:center;min-height:44px;text-decoration:none;font-size:16px;font-weight:600;color:#111111;transition:color .2s ease}
+.navlink:hover{color:#B30505}
+.navlink[aria-current="page"]{color:#B30505}
+.meta{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px 32px}
+.split{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:40px 48px;align-items:start}
+.split-a{grid-column:span 7}
+.split-b{grid-column:8 / span 5}
+.imgs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.imgs .wide{grid-column:1 / -1}
+.next{text-decoration:none;transition:color .2s ease}
+.next:hover{color:#B30505}
+@media (max-width:860px){
+.meta{grid-template-columns:repeat(2,minmax(0,1fr))}
+.split-a,.split-b{grid-column:1 / -1}
+.imgs{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:860px){
+.row,.split,.flowbox{grid-template-columns:minmax(0,1fr)}
+main h1.disp{font-size:clamp(34px,9vw,64px)!important;overflow-wrap:anywhere}
+main a.disp[href^="mailto"]{font-size:clamp(22px,6.5vw,32px)!important}
+ul.row-b{grid-template-columns:minmax(0,1fr)!important}
+}
+</style>
+</head>
+<body>
+<div class="kss" style="min-height: 100vh; display: flex; flex-direction: column">
+<header class="wrap" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 32px; padding-top: 20px; padding-bottom: 20px; border-bottom: 1px solid #E6E6E6">
+<a href="/" aria-label="Kim Sum Studio, home" style="display: flex; align-items: center; gap: 14px; text-decoration: none; color: #111111">
+<span class="disp" style="display: flex; align-items: center; gap: 8px; font-size: 22px; font-weight: 700; line-height: 1; letter-spacing: 0.01em; text-transform: uppercase"><span>Kim Sum</span><img src="/assets/img/seal.webp" alt="" style="width: 30px; height: 30px; object-fit: contain"><span>Studio</span></span>
+</a>
+<nav aria-label="Main" style="display: flex; gap: 32px">
+<a class="navlink disp" href="/projects/" aria-current="page">Projects</a>
+<a class="navlink disp" href="/about/">About</a>
+</nav>
+</header>
+<main class="wrap" style="flex: 1; width: 100%; max-width: 1440px; margin: 0 auto; box-sizing: border-box; padding-top: 72px; padding-bottom: 128px; display: flex; flex-direction: column; gap: 72px">
+<div style="display: flex; flex-direction: column; gap: 28px">
+<a href="/projects/" style="display: inline-flex; align-items: center; gap: 8px; min-height: 44px; align-self: flex-start; font-size: 15px; text-decoration: none; color: #404040"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"></path><path d="M11 6l-6 6 6 6"></path></svg>All projects</a>
+<p class="disp" style="margin: 0; font-size: 18px; font-weight: 600; color: #B30505">03</p>
+<h1 class="disp" style="margin: 0; font-size: 60px; line-height: 1.08; font-weight: 600; letter-spacing: -0.015em; max-width: 1000px">mirrOR Surgical Interface Redesign</h1>
+</div>
+<dl class="meta" style="margin: 0; padding: 28px 0; border-top: 1px solid #E6E6E6; border-bottom: 1px solid #E6E6E6">
+<div style="display: flex; flex-direction: column; gap: 6px"><dt style="font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: #595959">Client</dt><dd style="margin: 0; font-size: 18px">Rods &amp; Cones</dd></div>
+<div style="display: flex; flex-direction: column; gap: 6px"><dt style="font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: #595959">Year</dt><dd style="margin: 0; font-size: 18px">2021</dd></div>
+<div style="display: flex; flex-direction: column; gap: 6px"><dt style="font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: #595959">Role</dt><dd style="margin: 0; font-size: 18px">UX Design Lead</dd></div>
+<div style="display: flex; flex-direction: column; gap: 6px"><dt style="font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: #595959">Focus</dt><dd style="margin: 0; font-size: 18px">MedTech</dd></div>
+</dl>
+<div class="split">
+<p class="split-a" style="margin: 0; font-size: 22px; line-height: 1.6; color: #262626">mirrOR lets surgeons stream their point of view to remote experts mid-operation, but years of added features had left a toolbar packed with controls competing for attention at exactly the wrong moment. Six interviews across surgeons, support agents and product managers, plus an icon recognition test, showed users relied on just five or six of them. The redesign cut the bottom toolbar to six core controls and moved everything else into collapsible panels, without removing any functionality.</p>
+<div class="split-b" style="display: flex; flex-direction: column; gap: 12px; padding-top: 24px; border-top: 2px solid #B30505">
+<p class="disp" style="margin: 0; font-size: 72px; line-height: 1; font-weight: 700; color: #B30505">100%</p>
+<p style="margin: 0; font-size: 17px; line-height: 1.5; color: #262626">of Harvard Medical School surgeons chose the new interface</p>
+</div>
+</div>
+<div class="imgs">
+<figure class="wide" style="margin: 0; display: flex; flex-direction: column; gap: 12px"><img src="/assets/img/mirror-final.webp" alt="The redesigned mirrOR interface on a laptop: a clean main surgical feed, a slim bottom toolbar and side panels for vitals and secondary cameras" style="display: block; width: 100%; height: auto"><figcaption style="font-size: 14px; line-height: 1.5; color: #595959">The interface surgeons chose: the original stayed available as a fallback, and Harvard Medical School surgeons unanimously picked the new one</figcaption></figure>
+<figure style="margin: 0; display: flex; flex-direction: column; gap: 12px"><img src="/assets/img/mirror-before.webp" alt="The original mirrOR interface, with a long bottom toolbar of small icons and stacked camera panels competing with the main feed" style="display: block; width: 100%; height: auto"><figcaption style="font-size: 14px; line-height: 1.5; color: #595959">Before: a tool that had outgrown itself</figcaption></figure>
+<figure style="margin: 0; display: flex; flex-direction: column; gap: 12px"><img src="/assets/img/mirror-toolbar.webp" alt="The new bottom toolbar, stripped back to six core controls: zoom, inclination, focus, exposure, contrast and pointer" style="display: block; width: 100%; height: auto"><figcaption style="font-size: 14px; line-height: 1.5; color: #595959">After: the bottom toolbar, cut to six core controls</figcaption></figure>
+<figure class="wide" style="margin: 0; display: flex; flex-direction: column; gap: 12px"><img src="/assets/img/mirror-toolbox.webp" alt="The contextual interaction toolbox, shown collapsed, extended and in use as a slide-in panel beside the main feed" style="display: block; width: 100%; height: auto"><figcaption style="font-size: 14px; line-height: 1.5; color: #595959">A slide-in interaction toolbox keeps collaboration and annotation tools on demand, not on screen</figcaption></figure>
+</div>
+<a class="next" href="/projects/fibo-ar-treasure-hunt/" style="display: flex; flex-direction: column; gap: 8px; padding-top: 40px; border-top: 1px solid #E6E6E6; color: #111111">
+<span style="font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: #595959">Next project</span>
+<span class="disp" style="font-size: 32px; font-weight: 600">04 — FIBO AR Treasure Hunt →</span>
+</a>
+</main>
+<footer class="wrap" style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 32px; padding-top: 28px; padding-bottom: 32px; border-top: 1px solid #E6E6E6; font-size: 14px; color: #595959">
+<p style="margin: 0">London · <a href="mailto:hello@kimsum.studio" style="color: #111111">hello@kimsum.studio</a></p>
+<p style="margin: 0">金心工作室 · Est. 2014</p>
+</footer>
+</div>
+
+</body>
+</html>

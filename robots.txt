@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /projects/fuel-card-launch/
+
+Sitemap: https://kimsum.studio/sitemap.xml
