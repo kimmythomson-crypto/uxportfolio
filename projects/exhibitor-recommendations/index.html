@@ -36,6 +36,37 @@ a{color:#111111}a:hover{color:#B30505}
 .split-b{grid-column:8 / span 5}
 .imgs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
 .imgs .wide{grid-column:1 / -1}
+.cs{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:32px 48px;align-items:start;padding-top:56px;border-top:1px solid #E6E6E6}
+.cs-t{grid-column:span 4;display:flex;flex-direction:column;gap:16px}
+.cs-m{grid-column:5 / -1;min-width:0}
+.cs-full .cs-t{grid-column:1 / span 8}
+.cs-full .cs-m{grid-column:1 / -1}
+.eyebrow{margin:0;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#B30505;font-weight:600}
+.cs h2{margin:0;font-size:32px;line-height:1.15;font-weight:600;color:#111111}
+.cs .body{margin:0;font-size:17px;line-height:1.65;color:#262626}
+.stage{background:#F4F3F1;border-radius:20px;padding:40px;display:flex;justify-content:center;align-items:flex-start;gap:24px;flex-wrap:wrap;margin:0}
+.stage figure{margin:0;display:flex;flex-direction:column;gap:12px}
+.stage figcaption{font-size:14px;line-height:1.45;color:#404040;max-width:150px}
+.stage figcaption b{display:block;color:#111111;font-weight:600}
+.phone{width:150px;max-width:100%;height:auto;border-radius:18px;border:1px solid #DADADA;display:block}
+.shot{width:100%;height:auto;border-radius:12px;display:block}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.cards4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.cards5{grid-template-columns:repeat(5,minmax(0,1fr))}
+.card2{background:#F4F3F1;border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:8px}
+.card2 .n{margin:0;font-size:15px;font-weight:700;color:#B30505}
+.card2 h3{margin:0;font-size:18px;line-height:1.3;font-weight:600;color:#111111}
+.card2 p{margin:0;font-size:15px;line-height:1.55;color:#404040}
+.card2 .big{margin:0 0 8px;font-size:56px;line-height:1;font-weight:700;color:#B30505}
+.win{display:inline-block;margin-top:4px;padding:3px 10px;border-radius:999px;background:#B30505;color:#FFFFFF;font-size:12px;font-weight:600;letter-spacing:.04em}
+@media (max-width:860px){
+.cs,.split,.flowbox{grid-template-columns:minmax(0,1fr)}
+.cs-t,.cs-m,.cs-full .cs-t,.cs-full .cs-m{grid-column:1 / -1}
+.cards,.cards4,.cards5{grid-template-columns:minmax(0,1fr)}
+.stage{padding:20px;gap:16px}
+.phone{width:140px}
+main h1.disp{font-size:clamp(34px,9vw,60px)!important}
+}
 .next{text-decoration:none;transition:color .2s ease}
 .next:hover{color:#B30505}
 @media (max-width:860px){
@@ -81,11 +112,57 @@ ul.row-b{grid-template-columns:minmax(0,1fr)!important}
 <p style="margin: 0; font-size: 17px; line-height: 1.5; color: #262626">events, and the first AI-native feature across all of them</p>
 </div>
 </div>
-<div class="imgs">
-<figure class="wide" style="margin: 0; display: flex; flex-direction: column; gap: 12px"><img src="/assets/img/llm-final.webp" alt="Exhibitor Finder, the final design, shown on desktop and mobile with conversational search and recommended exhibitors" style="display: block; width: 100%; height: auto"><figcaption style="font-size: 14px; line-height: 1.5; color: #595959">Exhibitor Finder: the final design, now part of the paid VIP matchmaking offer</figcaption></figure>
-<figure style="margin: 0; display: flex; flex-direction: column; gap: 12px"><img src="/assets/img/llm-metrics.webp" alt="Success metrics from user research: credibility averaged 8.3, enlightenment 7.7 and explainability 8.2 out of 10, all against a target of 6" style="display: block; width: 100%; height: auto"><figcaption style="font-size: 14px; line-height: 1.5; color: #595959">Visitors rated every recommendation for credibility, enlightenment and explainability</figcaption></figure>
-<figure style="margin: 0; display: flex; flex-direction: column; gap: 12px"><img src="/assets/img/llm-abc-test.webp" alt="An A/B/C test on the show floor comparing three exhibitor summary formats; bullet points written by Co-Pilot won" style="display: block; width: 100%; height: auto"><figcaption style="font-size: 14px; line-height: 1.5; color: #595959">An A/B/C test on the show floor to find the most useful summary format</figcaption></figure>
-<figure class="wide" style="margin: 0; display: flex; flex-direction: column; gap: 12px"><img src="/assets/img/llm-maps.webp" alt="Maps integration: behaviour-based recommendations shown inside the show navigation app on two phone screens" style="display: block; width: 100%; height: auto"><figcaption style="font-size: 14px; line-height: 1.5; color: #595959">Maps integration: behaviour-based recommendations inside the navigation tool used across 100+ shows</figcaption></figure>
+<div style="display: flex; flex-direction: column; gap: 72px">
+<section class="cs" aria-labelledby="l-idea">
+<div class="cs-t">
+<p class="eyebrow">The idea</p>
+<h2 id="l-idea" class="disp">Recommendations based on what visitors actually need</h2>
+<p class="body">RX Global runs 250+ shows a year, and for visitors the number one goal is making connections. But shows are big and busy, few people plan ahead, and recommendations relied on registration data that exhibitors often filled in poorly.</p>
+<p class="body">An LLM recommender matches exhibitors by meaning, not keywords, from two sources: what visitors say they need, and how they move around the show.</p>
+</div>
+<div class="cs-m">
+<figure class="stage" style="flex-direction: column; align-items: center"><img src="/assets/img/llm-exhibitor-finder.webp" alt="Exhibitor Finder on a laptop: a welcome screen summarising the visitor’s registration details, with a box to describe what they are looking for" style="width: 100%; max-width: 720px; height: auto; display: block"><figcaption style="max-width: none">Exhibitor Finder: visitors describe what they’re looking for in plain language.</figcaption></figure>
+</div>
+</section>
+<section class="cs cs-full" aria-labelledby="l-research">
+<div class="cs-t">
+<p class="eyebrow">Research</p>
+<h2 id="l-research" class="disp">Rated on the show floor</h2>
+<p class="body">At two live events, visitors rated each recommendation out of 10 on three pillars. All three cleared the target of 6.</p>
+</div>
+<div class="cs-m">
+<div class="cards">
+<div class="card2"><p class="big disp">8.3</p><h3>Credibility</h3><p>Familiar and trustworthy. 28 ratings, median 9.</p></div>
+<div class="card2"><p class="big disp">7.7</p><h3>Enlightenment</h3><p>Helped visitors discover new and unknown exhibitors. 23 ratings, median 9.</p></div>
+<div class="card2"><p class="big disp">8.2</p><h3>Explainability</h3><p>The reason for each recommendation was clear. 24 ratings, median 8.5.</p></div>
+</div>
+</div>
+</section>
+<section class="cs" aria-labelledby="l-test">
+<div class="cs-t">
+<p class="eyebrow">Testing</p>
+<h2 id="l-test" class="disp">Which summary helps visitors choose?</h2>
+<p class="body">An A/B/C test on the show floor compared three ways of describing each recommended exhibitor. Short bullet points won.</p>
+</div>
+<div class="cs-m">
+<div class="stage">
+<figure><img class="phone" src="/assets/img/llm-summary-directory.webp" alt="Format A: long paragraphs taken from each exhibitor’s own directory listing"><figcaption><b>A</b>The exhibitor’s own directory text</figcaption></figure>
+<figure><img class="phone" src="/assets/img/llm-summary-claude.webp" alt="Format B: shorter AI-written paragraphs tailored to the visitor"><figcaption><b>B</b>Summary by Claude, using a data scientist’s prompt</figcaption></figure>
+<figure><img class="phone" src="/assets/img/llm-summary-bullets.webp" alt="Format C: three short bullet points per exhibitor"><figcaption><b>C</b>Bullet points by Co-Pilot <span class="win">Winning format</span></figcaption></figure>
+</div>
+</div>
+</section>
+<section class="cs" aria-labelledby="l-roll">
+<div class="cs-t">
+<p class="eyebrow">Roll-out</p>
+<h2 id="l-roll" class="disp">Finding the right channel</h2>
+<p class="body">Visitors liked the recommendations, but at the show they didn’t want another app, and before it they were already swamped by show emails.</p>
+<p class="body">Behaviour-based recommendations found their home in Maps, the navigation tool used by 100+ RX shows since mid-2024. The model also powers paid VIP matchmaking as part of the ‘At Show Experience’, with roll-out across all shows planned from July 2026.</p>
+</div>
+<div class="cs-m">
+<figure class="stage" style="flex-direction: column; align-items: center"><img src="/assets/img/llm-maps-phones.webp" alt="Two phones showing Maps: a list of exhibitors similar to one the visitor viewed, and a floor plan pinpointing them" style="width: 100%; max-width: 380px; height: auto; display: block"><figcaption style="max-width: none">Recommendations inside Maps, linked to the floor plan.</figcaption></figure>
+</div>
+</section>
 </div>
 <a class="next" href="/projects/mirror-surgical-interface/" style="display: flex; flex-direction: column; gap: 8px; padding-top: 40px; border-top: 1px solid #E6E6E6; color: #111111">
 <span style="font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: #595959">Next project</span>

@@ -36,6 +36,37 @@ a{color:#111111}a:hover{color:#B30505}
 .split-b{grid-column:8 / span 5}
 .imgs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
 .imgs .wide{grid-column:1 / -1}
+.cs{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:32px 48px;align-items:start;padding-top:56px;border-top:1px solid #E6E6E6}
+.cs-t{grid-column:span 4;display:flex;flex-direction:column;gap:16px}
+.cs-m{grid-column:5 / -1;min-width:0}
+.cs-full .cs-t{grid-column:1 / span 8}
+.cs-full .cs-m{grid-column:1 / -1}
+.eyebrow{margin:0;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#B30505;font-weight:600}
+.cs h2{margin:0;font-size:32px;line-height:1.15;font-weight:600;color:#111111}
+.cs .body{margin:0;font-size:17px;line-height:1.65;color:#262626}
+.stage{background:#F4F3F1;border-radius:20px;padding:40px;display:flex;justify-content:center;align-items:flex-start;gap:24px;flex-wrap:wrap;margin:0}
+.stage figure{margin:0;display:flex;flex-direction:column;gap:12px}
+.stage figcaption{font-size:14px;line-height:1.45;color:#404040;max-width:150px}
+.stage figcaption b{display:block;color:#111111;font-weight:600}
+.phone{width:150px;max-width:100%;height:auto;border-radius:18px;border:1px solid #DADADA;display:block}
+.shot{width:100%;height:auto;border-radius:12px;display:block}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.cards4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.cards5{grid-template-columns:repeat(5,minmax(0,1fr))}
+.card2{background:#F4F3F1;border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:8px}
+.card2 .n{margin:0;font-size:15px;font-weight:700;color:#B30505}
+.card2 h3{margin:0;font-size:18px;line-height:1.3;font-weight:600;color:#111111}
+.card2 p{margin:0;font-size:15px;line-height:1.55;color:#404040}
+.card2 .big{margin:0 0 8px;font-size:56px;line-height:1;font-weight:700;color:#B30505}
+.win{display:inline-block;margin-top:4px;padding:3px 10px;border-radius:999px;background:#B30505;color:#FFFFFF;font-size:12px;font-weight:600;letter-spacing:.04em}
+@media (max-width:860px){
+.cs,.split,.flowbox{grid-template-columns:minmax(0,1fr)}
+.cs-t,.cs-m,.cs-full .cs-t,.cs-full .cs-m{grid-column:1 / -1}
+.cards,.cards4,.cards5{grid-template-columns:minmax(0,1fr)}
+.stage{padding:20px;gap:16px}
+.phone{width:140px}
+main h1.disp{font-size:clamp(34px,9vw,60px)!important}
+}
 .next{text-decoration:none;transition:color .2s ease}
 .next:hover{color:#B30505}
 @media (max-width:860px){
@@ -81,11 +112,61 @@ ul.row-b{grid-template-columns:minmax(0,1fr)!important}
 <p style="margin: 0; font-size: 17px; line-height: 1.5; color: #262626">of Harvard Medical School surgeons chose the new interface</p>
 </div>
 </div>
-<div class="imgs">
-<figure class="wide" style="margin: 0; display: flex; flex-direction: column; gap: 12px"><img src="/assets/img/mirror-final.webp" alt="The redesigned mirrOR interface on a laptop: a clean main surgical feed, a slim bottom toolbar and side panels for vitals and secondary cameras" style="display: block; width: 100%; height: auto"><figcaption style="font-size: 14px; line-height: 1.5; color: #595959">The interface surgeons chose: the original stayed available as a fallback, and Harvard Medical School surgeons unanimously picked the new one</figcaption></figure>
-<figure style="margin: 0; display: flex; flex-direction: column; gap: 12px"><img src="/assets/img/mirror-before.webp" alt="The original mirrOR interface, with a long bottom toolbar of small icons and stacked camera panels competing with the main feed" style="display: block; width: 100%; height: auto"><figcaption style="font-size: 14px; line-height: 1.5; color: #595959">Before: a tool that had outgrown itself</figcaption></figure>
-<figure style="margin: 0; display: flex; flex-direction: column; gap: 12px"><img src="/assets/img/mirror-toolbar.webp" alt="The new bottom toolbar, stripped back to six core controls: zoom, inclination, focus, exposure, contrast and pointer" style="display: block; width: 100%; height: auto"><figcaption style="font-size: 14px; line-height: 1.5; color: #595959">After: the bottom toolbar, cut to six core controls</figcaption></figure>
-<figure class="wide" style="margin: 0; display: flex; flex-direction: column; gap: 12px"><img src="/assets/img/mirror-toolbox.webp" alt="The contextual interaction toolbox, shown collapsed, extended and in use as a slide-in panel beside the main feed" style="display: block; width: 100%; height: auto"><figcaption style="font-size: 14px; line-height: 1.5; color: #595959">A slide-in interaction toolbox keeps collaboration and annotation tools on demand, not on screen</figcaption></figure>
+<div style="display: flex; flex-direction: column; gap: 72px">
+<section class="cs" aria-labelledby="r-problem">
+<div class="cs-t">
+<p class="eyebrow">The problem</p>
+<h2 id="r-problem" class="disp">A tool that had outgrown itself</h2>
+<p class="body">Since launch, mirrOR had gained features one user request at a time, without anyone stepping back to look at the whole. The result was a toolbar packed with controls competing for attention at the moment surgeons most needed to focus: mid-operation, under pressure, with no margin for error.</p>
+<p class="body">The brief: simplify the interface without losing functionality.</p>
+</div>
+<div class="cs-m">
+<figure style="margin: 0; display: flex; flex-direction: column; gap: 12px"><img class="shot" src="/assets/img/mirror-before-ui.webp" alt="The original mirrOR interface: the surgical feed with stacked camera panels on the right and a long toolbar of small icons along the bottom"><figcaption style="font-size: 14px; line-height: 1.5; color: #595959">Before: controls and camera panels competing with the surgical feed.</figcaption></figure>
+</div>
+</section>
+<section class="cs" aria-labelledby="r-research">
+<div class="cs-t">
+<p class="eyebrow">Research</p>
+<h2 id="r-research" class="disp">Listening to the people in the room</h2>
+<p class="body">Six interviews across three groups: surgeons, the customer service agents who join live calls to troubleshoot, and product managers. All three said the same thing. The interface held far more controls than a live procedure ever needed, and users worked around features they never touched to reach the five or six they relied on.</p>
+<p class="body">An icon recognition test on the existing set, especially the smart glasses controls, showed which icons were understood at a glance and which caused hesitation.</p>
+</div>
+<div class="cs-m">
+<div class="stage" style="flex-direction: column; align-items: flex-start; gap: 16px; padding: 48px">
+<p class="disp" style="margin: 0; font-size: 160px; line-height: .9; font-weight: 700; color: #B30505">6</p>
+<p style="margin: 0; font-size: 20px; line-height: 1.4; font-weight: 600; color: #111111">The maximum number of icons on screen during surgery</p>
+<p style="margin: 0; font-size: 17px; line-height: 1.6; color: #404040; max-width: 560px">In a high-pressure, high-stakes environment, visual noise isn’t just an inconvenience. It’s a risk. Every unnecessary element is a potential point of hesitation, at a moment when hesitation costs time.</p>
+</div>
+</div>
+</section>
+<section class="cs cs-full" aria-labelledby="r-changed">
+<div class="cs-t">
+<p class="eyebrow">The redesign</p>
+<h2 id="r-changed" class="disp">What changed and why</h2>
+</div>
+<div class="cs-m" style="display: flex; flex-direction: column; gap: 24px">
+<div class="cards">
+<div class="card2"><h3>The bottom toolbar</h3><p>Stripped back to the six controls needed during a live call: zoom, inclination, focus, exposure, contrast and pointer.</p></div>
+<div class="card2"><h3>Secondary controls and cameras</h3><p>Secondary controls moved to a collapsible side panel. Extra camera feeds became collapsible thumbnail strips, visible without pulling focus from the main view.</p></div>
+<div class="card2"><h3>The interaction toolbox</h3><p>A slide-in panel keeps collaboration and annotation tools on demand, leaving the main canvas clean.</p></div>
+</div>
+<div class="stage" style="align-items: stretch; flex-wrap: nowrap; padding: 32px">
+<img src="/assets/img/mirror-after-ui.webp" alt="The redesigned interface: a large surgical feed, six controls in the bottom toolbar, camera thumbnails along the bottom and the interaction toolbox open on the right" style="flex: 4 1 0; min-width: 0; width: 100%; height: auto; border-radius: 10px; display: block; align-self: center">
+<img src="/assets/img/mirror-side-panel.webp" alt="The side navigation panel, extended, listing secondary controls such as add image source, screen layout presets, web cam, screen share and volume" style="flex: 1 1 0; min-width: 0; width: 100%; height: auto; border-radius: 10px; display: block; align-self: center">
+</div>
+</div>
+</section>
+<section class="cs" aria-labelledby="r-outcome">
+<div class="cs-t">
+<p class="eyebrow">Outcome</p>
+<h2 id="r-outcome" class="disp">The interface surgeons chose</h2>
+<p class="body">When the redesign rolled out, Rods &amp; Cones kept the original interface available as a fallback, a deliberate choice to reduce risk and give users options.</p>
+<p class="body">Harvard Medical School surgeons unanimously chose the new one.</p>
+</div>
+<div class="cs-m">
+<figure class="stage" style="justify-content: center"><img src="/assets/img/mirror-laptop.webp" alt="The redesigned mirrOR interface on a laptop" style="width: 100%; max-width: 760px; height: auto; display: block"></figure>
+</div>
+</section>
 </div>
 <a class="next" href="/projects/fibo-ar-treasure-hunt/" style="display: flex; flex-direction: column; gap: 8px; padding-top: 40px; border-top: 1px solid #E6E6E6; color: #111111">
 <span style="font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: #595959">Next project</span>
